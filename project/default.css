@@ -1,0 +1,78 @@
+﻿/*$color1: #61c0c8;
+$color2: #67c2c5;
+$color3: white;
+$color4: #aff1f9;
+*/
+body {
+	/*margin: 0;
+*/	background: rgb(209,85,48);
+    background: radial-gradient(circle, rgba(209,85,48,1) 0%, rgba(249,225,0,1) 97%);
+	display:block;
+	/*text-align:center;
+*/}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul li {
+	font-size: 40px;
+	font-family: sans-serif;
+	background-color: white;
+	border: 2px solid black;
+	/*letter-spacing: 0.1em;*/
+	width: 10em;
+	height: 1em;
+	line-height: 1em;
+	position: relative;
+	overflow: hidden;
+	margin: 0.1em;
+	cursor: pointer;
+	text-align:center;
+	padding:5px;
+}
+
+nav ul li span {
+	color: white;
+	mix-blend-mode: difference;
+}
+
+nav ul li::before {
+	content: '';
+	position: absolute;
+	width: 1.5em;
+	height: inherit;
+	background-color: black;
+	border-radius: 50%;
+	top: 0;
+	left: -0.75em;
+	transition: 1.5s ease-out;
+}
+
+nav ul li:hover::before {
+	transform: scale(15);
+}
+p{
+    text-align: center;
+    font-family: "Helvetica";
+    font-size:0.8rem;
+}
+
+p {
+	max-width: 300px;
+	font-family: 'Righteous', cursive;
+	font-size: 2rem;
+	color: rgb(131,58,180);	
+	span {
+		width: 100%;
+		background-size: 0 100%;
+		background-repeat: no-repeat;
+		transition: 250ms linear;
+	}
+
+	// Demo animation
+	span:hover {
+		background-size: 100% 100%;
+	}
+}
