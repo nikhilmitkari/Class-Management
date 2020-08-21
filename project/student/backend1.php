@@ -9,9 +9,10 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 	$class = $_POST['std_class'];
 	$mob = $_POST['std_mob'];
 	$email = $_POST['std_mail'];
+	$lastName = $_POST['l_name'];
 	$message= " ";
 	
-	$query = "insert into cm_student_details(student_roll_no, student_name, student_gender, student_class, student_phone_no, student_mailid) values('$rollno','$name','$gender','$class','$mob','$email')";
+	$query = "insert into cm_student_details(student_roll_no, student_name,last_name, student_gender, student_class, student_phone_no, student_mailid) values('$rollno','$name','$lastName','$gender','$class','$mob','$email')";
 	$row = mysqli_query($conn, $query);
 	
 	if($row){

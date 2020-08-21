@@ -9,9 +9,10 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 		$class = $_POST['std_class'];
 		$phone = $_POST['std_phone'];
 		$email = $_POST['std_mail'];
+		$lastName= $_POST['l_name'];
 
 		
-		$query = " UPDATE cm_student_details SET student_name = '$name', student_gender = '$gender', student_class = '$class', student_phone_no = '$phone', student_mailid = '$email' where student_roll_no = '$rollno' ";                                                         
+		$query = " UPDATE cm_student_details SET student_name = '$name', last_name = '$lastName', student_gender = '$gender', student_class = '$class', student_phone_no = '$phone', student_mailid = '$email' where student_roll_no = '$rollno' ";                                                         
 																								
 		$res = mysqli_query($conn, $query);
 		$message =" ";

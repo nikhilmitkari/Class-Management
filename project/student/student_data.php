@@ -119,9 +119,11 @@ if ($result = $mysqli->query('SELECT * FROM cm_student_details ORDER BY ' .  $co
 		<body>
 		
 		<h1 style="text-align:center">Student Information</h1>
+		<h3 style="color:aqua">Note: Click On student name to know their teachers</h3>
 
-		<button class="button" style="vertical-align:middle"><a href="add_student.php" style="color:white"><span>Add Student </span></a></button>
-		<button class="button1" style="float:right; background-color: lime;"><a href="../default.php" style="color:black; text-decoration:blink"><span><i class="fas fa-home"></i>Home </span></a></button><br>
+		<button class="button1" style="float:right; background-color: lime;"><a href="../default.php" style="color:black; text-decoration:blink; margin-top:-50px"><span><i class="fas fa-home"></i>Home </span></a></button>
+		<button class="button" style="vertical-align:middle"><a href="add_student.php" style="color:white"><span>Add Student </span></a></button><br>
+		<button class="button" style="vertical-align:middle"><a href="filter_student.php" style="color:white"><span>Class-Wise Student </span></a></button>
 		<button class="button1" style="float:right; background-color: lime;"><a href="student_data.php" style="color:black; text-decoration:blink"><i class="fas fa-sync-alt"></i><span>Refresh </span></a></button>
 		<p style="text-align:center"><?php
 			if(isset($_GET['u_msg'])){
@@ -131,7 +133,7 @@ if ($result = $mysqli->query('SELECT * FROM cm_student_details ORDER BY ' .  $co
 			<table>
 				<tr>
 					<th><a href="student_data.php?column=student_roll_no&order=<?php echo $asc_or_desc; ?>">Enrollment No<i class="fas fa-sort<?php echo $column == 'student_roll_no' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-					<th><a href="student_data.php?column=student _name&order=<?php echo $asc_or_desc; ?>">Name<i class="fas fa-sort<?php echo $column == 'student_name' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+					<th><a href="student_data.php?column=student_mailid&order=<?php echo $asc_or_desc; ?>">Name<i class="fas fa-sort<?php echo $column == 'student_mailid' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 					<th><a href="student_data.php?column=student_gender&order=<?php echo $asc_or_desc; ?>">Gender<i class="fas fa-sort<?php echo $column == 'student_gender' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 					<th><a href="student_data.php?column=student_class&order=<?php echo $asc_or_desc; ?>">Class<i class="fas fa-sort<?php echo $column == 'student_class' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 					<th><a href="student_data.php?column=student_phone_no&order=<?php echo $asc_or_desc; ?>">Phone No<i class="fas fa-sort<?php echo $column == 'student_phone_no' ? '-' . $up_or_down : ''; ?>"></i></a></th>
@@ -142,8 +144,8 @@ if ($result = $mysqli->query('SELECT * FROM cm_student_details ORDER BY ' .  $co
 				<?php while ($row = $result->fetch_assoc()): ?>
 				<tr>
 					<td<?php echo $column == 'student_roll_no' ? $add_class : ''; ?> > <?php echo $row['student_roll_no']; ?></td>
-					<td<?php echo $column == 'student_name' ? $add_class : ''; ?>><a <?php echo "href='student_teacher.php?no={$row['student_class']}&&name={$row['student_name']}'";?> ><?php echo $row['student_name']; ?></a></td>
-					<td<?php echo $column == 'student_gender' ? $add_class : ''; ?>><?php echo $row['student_gender']; ?></td>
+					<td<?php echo $column == 'student_mailid' ? $add_class : ''; ?>><a <?php echo "href='student_teacher.php?no={$row['student_class']}&&std_id={$row['student_roll_no']}'";?> ><?php echo $row['student_name']." ".$row['last_name']; ?></a></td>    <!--
+-->					<td<?php echo $column == 'student_gender' ? $add_class : ''; ?>><?php echo $row['student_gender']; ?></td>
 					<td<?php echo $column == 'student_class' ? $add_class : ''; ?>><?php echo $row['student_class']; ?></td>
 					<td<?php echo $column == 'student_phone_no' ? $add_class : ''; ?>><?php echo $row['student_phone_no']; ?></td>
 					<td<?php echo $column == 'student_mailid' ? $add_class : ''; ?>><?php echo $row['student_mailid']; ?></td>

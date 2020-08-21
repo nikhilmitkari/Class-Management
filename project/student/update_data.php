@@ -49,7 +49,7 @@
 	<table style="width:100%">
 			  <tr>
 			    <td>Enter full name:</td>
-			    <td><input type="text" name="std_name" required value = "<?php echo $res['student_name'];?>"> </td>
+			    <td><input type="text" name="std_name" placeholder="Last Name..." required value = "<?php echo $res['student_name'];?>"><input type="text" name="l_name" placeholder="Last Name..." value="<?php echo $res['last_name']?>"> </td>
 			    
 			  </tr>
 			  <tr>

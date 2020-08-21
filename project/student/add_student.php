@@ -29,7 +29,7 @@
 			<table style="width:100%">
 			  <tr>
 			    <td>Enter full name:</td>
-			    <td><input type="text" name="std_name" required></td>
+			    <td><input type="text" name="std_name" placeholder="First Name..." required><input type="text" name="l_name" placeholder="Last name..."></td>
 			    
 			  </tr>
 			  <tr>

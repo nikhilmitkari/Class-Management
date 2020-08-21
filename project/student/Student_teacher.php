@@ -4,9 +4,11 @@
 	if(isset($_GET['no'])){
 		$count =0;
 		$no = $_GET['no'];
-		$name = $_GET['name'];
+		$name = $_GET['std_id'];
 		$query = "SELECT a.map_tid,b.t_name,a.map_sname,a.map_clsname from cm_mapping a inner join cm_teacher_details b on a.map_tid=b.t_id WHERE map_clsname=" .$_GET['no'];
-		$exc = mysqli_query($conn, $query);	
+		$query1 = "select * from cm_student_details where student_roll_no =" .$_GET['std_id'];
+		$exc = mysqli_query($conn, $query);
+		$row= mysqli_query($conn, $query1);	
 ?>
 <html lang="en">
 
@@ -19,14 +21,82 @@
 	th{
 	border-right:1px black groove;
 }
-	
-
+body{
+	background: linear-gradient(to right bottom, gold, chocolate)
+}
+table {
+				border-collapse: collapse;
+				width: 100%;
+			}
+			th {
+				background-color: #4CAF50;
+				border: 1px solid #54585d;
+			}
+			th:hover {
+				background-color: #64686e;
+			}
+			th a {
+				display: block;
+				text-decoration:none;
+				padding: 10px;
+				color: #ffffff;
+				font-weight: bold;
+				font-size: 13px;
+			}
+			th a i {
+				margin-left: 5px;
+				color: rgba(255,255,255,0.4);
+			}
+			td {
+				padding: 10px;
+				border: 1px solid #dddfe1;
+			}
+			tr {
+				background-color: #FFFF99;
+			}
+			tr .highlight {
+				background-color: #FFFF99;
+}
 </style>
-<title>Untitled 1</title>
+<title>Student details</title>
 </head>
 
 <body>
-	<h3>All the Subject with respective Teacher to a student <?php echo $name;?> for a class : <?php echo $no;?></h3><br>
+	<h3>All the Subject with respective Teacher to a following Student : </h3><br>
+	<center><fieldset name="Group1" style="width:600px; text-align:center;">
+				<legend>Student details</legend>
+
+				<table>
+				<tr>
+					<td></td>
+					<td style=" text-align:right"><button><a href="student_data.php">Go Back</a></button></td>
+				</tr>
+				<?php while($result = mysqli_fetch_array($row)){ ?>
+					<tr>
+						<td style="text-align:right">Enrollment No: </td>
+						<td style="color:red"><?php echo $result['student_roll_no'];?></td>
+					</tr>
+					<tr>	
+						<td style="text-align:right">Student Name: </td>
+						<td style="color:red"><?php echo $result['student_name'] ." " .$result['last_name'];?></td>
+					</tr>
+					<tr>	
+						<td style="text-align:right">Gender: </td>
+						<td style="color:red"><?php echo $result['student_gender'];?></td>
+					</tr>
+					<tr>	
+						<td style="text-align:right">Class: </td>
+						<td style="color:red"><?php echo $result['student_class'];?></td>
+
+					</tr>	
+						<td style="text-align:right">Email Address: </td>
+						<td style="color:red"><?php echo $result['student_mailid'];?></td>
+					<tr>	
+						<td style="text-align:right">Phone No: </td>
+						<td style="color:red"><?php echo $result['student_phone_no'];?></td>
+					</tr>
+				</table><?php }?>
+			</fieldset></center>
 	
 	<table style="border:1px black solid">
 		<tr>
