@@ -3,9 +3,9 @@
 	require 'connection.php';
 	$count = 1;
 	$query= "select student_class,count(*) as cnt from cm_student_details group by student_class";
-	$query1= "SELECT map_sname, count(*)as total from cm_mapping group by map_sname";
+	#$query1= "SELECT map_sname, count(*)as total from cm_mapping group by map_sname";
 	$row= mysqli_query($conn, $query);
-	$row1= mysqli_query($conn, $query1);
+#	$row1= mysqli_query($conn, $query1);
 ?>
 <html>
 <head>
@@ -130,19 +130,61 @@ background: linear-gradient(to right, #1F1C18, #8E0E00); /* W3C, IE 10+/ Edge, F
   <div class="column">
     <h2>Teacher by Subject</h2>
    <table style="width:100%; border:2px black;">
+ 	<?php 
+   	
+   	$query_eng = "SELECT distinct map_tid FROM cm_mapping WHERE map_sname = 'English'"; 
+   	$query_hind = "SELECT distinct map_tid FROM cm_mapping WHERE map_sname = 'Hindi'";
+	$query_mar = "SELECT distinct map_tid FROM cm_mapping WHERE map_sname = 'Marathi'";
+	$query_math = "SELECT distinct map_tid FROM cm_mapping WHERE map_sname = 'Math'"; 
+   	$query_sci = "SELECT distinct map_tid FROM cm_mapping WHERE map_sname = 'Science'"; 
+	$query_soc = "SELECT distinct map_tid FROM cm_mapping WHERE map_sname = 'Social Studies'";
+   	
+   	$row1 = mysqli_query($conn, $query_eng);
+   	$row2 = mysqli_query($conn, $query_hind);
+   	$row3 = mysqli_query($conn, $query_mar);
+   	$row4 = mysqli_query($conn, $query_math);
+   	$row5 = mysqli_query($conn, $query_sci);
+   	$row6 = mysqli_query($conn, $query_soc);
+
+   	$count = 1;
+   		
+   	?>
+   	  
    	<tr>
    		<th>Sr. No.</th>
    		<th>Subject</th>
    		<th>Total Teacher</th>
    	</tr>
-   	<?php 
-   	$count = 1;
-   		while($result1 = mysqli_fetch_array($row1)){ 
-   	?>
+   	
    	<tr>
-   		<td><?php echo $count; $count += 1;?></td>
-   		<td><?php echo $result1['map_sname'];?></td>
-   		<td><?php echo $result1['total'];?></td><?php } ?>
+   		<td>1.</td>
+   		<td>English</td>
+   		<td><?php echo $result1 = mysqli_num_rows($row1); ?></td>
+   	</tr>
+   	<tr>
+   		<td>2.</td>	
+   		<td>Hindi</td>
+   		<td><?php echo $result2 = mysqli_num_rows($row2); ?></td>
+   	</tr>
+   	<tr>
+   		<td>3.</td>
+   		<td>Marathi</td>
+   		<td><?php echo $result3 = mysqli_num_rows($row3); ?></td>
+   	</tr>
+   	<tr>	
+   		<td>4.</td>
+   		<td>Math</td>
+   		<td><?php echo $result4 = mysqli_num_rows($row4); ?></td>
+   	</tr>
+   	<tr>	
+   		<td>5.</td>
+   		<td>Science</td>
+   		<td><?php echo $result5 = mysqli_num_rows($row5); ?></td>
+   	</tr>
+   	<tr>	
+   		<td>6.</td>
+   		<td>Social Studies</td>
+   		<td><?php echo $result6 = mysqli_num_rows($row6); ?></td>
    	</tr>
    </table>
   </div>
